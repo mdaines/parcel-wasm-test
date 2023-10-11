@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script type="module">
+
+  import Module from "./src/module.js";
+  import Viz from "./src/viz.js";
+
+  const moduleUrl = new URL("./src/module.wasm", import.meta.url);
+
+  function instance() {
+    return Module({ source: fetch(moduleUrl) }).then(m => new Viz(m));
+  }
+
+  instance().then(viz => {
+    console.log(viz.renderString("digraph { a -> b }"));
+  });
+
+</script>

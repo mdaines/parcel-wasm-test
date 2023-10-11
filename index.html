@@ -1,6 +1,8 @@
 <!doctype html>
 <meta charset="utf-8">
 
+<div id="graph"></div>
+
 <script type="module">
 
   import Module from "./src/module.js";
@@ -13,7 +15,7 @@
   }
 
   instance().then(viz => {
-    console.log(viz.renderString("digraph { a -> b }"));
+    document.getElementById("graph").appendChild(viz.renderSVGElement("digraph { a -> b }"));
   });
 
 </script>
